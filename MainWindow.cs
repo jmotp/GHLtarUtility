@@ -316,6 +316,9 @@ namespace GHLtarUtility
 
         private void DisplayTimer_Tick(object sender, EventArgs e)
         {
+
+            
+
             foreach (iOSGuitar guitar in iOSGuitars.ToList())
             {
                 if (guitar.isDisconnected)
@@ -343,11 +346,13 @@ namespace GHLtarUtility
                 }
             }
 
+
             // Enumerate through WinUSB devices and set those up if they are valid dongles.
             foreach (UsbRegistry device in LibUsbDotNet.UsbDevice.AllDevices)
             {
+                
                 // USB\VID_12BA&PID_074B is the ID of the PS3/Wii U dongle.
-                if (device.Vid == 0x12BA && device.Pid == 0x074B)
+                if (device.Vid == 0x12BA && device.Pid == 0x0100)
                 {
                     UsbDevice trueDevice;
                     device.Open(out trueDevice);
